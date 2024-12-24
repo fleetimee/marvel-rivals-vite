@@ -9,7 +9,9 @@ import { HeroDetail } from "./HeroDetail";
  */
 export const fetchHeroes = async (): Promise<Heroes[]> => {
   try {
-    const response = await fetch("/api/v1/heroes");
+    const response = await fetch(
+      "https://marvel-rivals-api.vercel.app/v1/heroes"
+    );
     const data = await response.json();
     return data;
   } catch (error) {
@@ -27,7 +29,9 @@ export const fetchHeroes = async (): Promise<Heroes[]> => {
  */
 export const fetchHeroDetail = async (id: string): Promise<HeroDetail> => {
   try {
-    const response = await fetch(`/api/v1/heroes/${id}`);
+    const response = await fetch(
+      `https://marvel-rivals-api.vercel.app/v1/heroes/${id}`
+    );
     const data = await response.json();
     return data;
   } catch (error) {
