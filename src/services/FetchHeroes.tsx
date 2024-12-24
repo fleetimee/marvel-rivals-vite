@@ -1,6 +1,14 @@
 import { Heroes } from "./Heroes";
 import { HeroDetail } from "./HeroDetail";
 
+const fetchConfig = {
+  mode: "cors" as RequestMode,
+  headers: {
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*",
+  },
+};
+
 /**
  * Fetches a list of heroes from the API.
  *
@@ -10,7 +18,8 @@ import { HeroDetail } from "./HeroDetail";
 export const fetchHeroes = async (): Promise<Heroes[]> => {
   try {
     const response = await fetch(
-      "https://marvel-rivals-api.vercel.app/v1/heroes"
+      "https://marvel-rivals-api.vercel.app/v1/heroes",
+      fetchConfig
     );
     const data = await response.json();
     return data;
@@ -30,7 +39,8 @@ export const fetchHeroes = async (): Promise<Heroes[]> => {
 export const fetchHeroDetail = async (id: string): Promise<HeroDetail> => {
   try {
     const response = await fetch(
-      `https://marvel-rivals-api.vercel.app/v1/heroes/${id}`
+      `https://marvel-rivals-api.vercel.app/v1/heroes/${id}`,
+      fetchConfig
     );
     const data = await response.json();
     return data;
